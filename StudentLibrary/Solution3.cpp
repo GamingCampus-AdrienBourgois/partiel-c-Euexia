@@ -1,6 +1,7 @@
 #include "Solution3.h"
 #include <algorithm>
 
+
 // Don't fortget to enable the exercise in the SudentConfiguration.h file !
 #include "StudentConfiguration.h"
 #ifdef COMPILE_EXERCICE_3
