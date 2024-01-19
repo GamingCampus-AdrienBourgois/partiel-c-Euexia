@@ -1,7 +1,8 @@
 #include "Solution2.h"
+#include <ostream>
 #include <fstream>
 #include <iostream>
-#include <ostream>
+#include <sstream>
 
 // Don't forget to enable the exercise in the SudentConfiguration.h file !
 #include "StudentConfiguration.h"
@@ -19,21 +20,27 @@ float Solution2::GetBalance(const std::string& accountName)
 
     float balance = 0.0f;
 
-		char transaction;
-		float amount;
+    std::string transaction;
 
 
-        while (input >> transaction >> amount)
+    while (std::getline(input, transaction))
+    {
+        std::istringstream lineStream(transaction);
+        std::string operation;
+        float amount;
+
+        if (lineStream >> operation >> amount)
         {
-            // Update balance based on transaction type
-            if (transaction == '+')
-            {
-                balance += amount; // Deposit
-        }
-            else if (transaction == '-')
-            {
-                balance -= amount; // Withdrawal
+            if (operation == "DEPOSIT") {
+                balance += amount;
             }
+            else if (operation == "WITHDRAW") {
+                balance -= amount;
+            }
+            else {
+                throw std::exception("Invalid operation");
+            }
+        }
     }
 
         input.close();
