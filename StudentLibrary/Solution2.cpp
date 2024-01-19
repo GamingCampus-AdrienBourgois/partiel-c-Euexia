@@ -44,7 +44,7 @@ float Solution2::GetBalance(const std::string& accountName)
     }
 
         input.close();
-	    return -1.0f;
+	    return balance;
 }
 
 #endif
