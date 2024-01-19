@@ -9,7 +9,7 @@
 
 float Solution2::GetBalance(const std::string& accountName)
 {
-	std::string filePath = "BankAccount/" + accountName;
+	std::string filePath = "BankAccount/" + accountName + ".txt";
 
 	std::ifstream input(filePath);
 
