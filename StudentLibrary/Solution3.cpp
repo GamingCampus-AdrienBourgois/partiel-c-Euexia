@@ -1,4 +1,5 @@
 #include "Solution3.h"
+#include <algorithm>
 
 // Don't fortget to enable the exercise in the SudentConfiguration.h file !
 #include "StudentConfiguration.h"
@@ -13,7 +14,11 @@ void Solution3::SortWords() {}
 
 std::vector<std::string> Solution3::GetSortedWords() const
 {
-	return words;
+    std::sort(words.begin(), words.end(), [](const std::string& a, const std::string& b) {
+        return std::lexicographical_compare(a.begin(), a.end(), b.begin(), b.end(), [](char c1, char c2) {
+            return tolower(c1) < tolower(c2);
+            });
+        });
 }
 
 #endif
